@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg-primary: #ffffff;
       --bg-secondary: #f5f5f3;
@@ -22,241 +21,85 @@
       --border-mid: rgba(0,0,0,0.18);
       --border-success: #4caf50;
     }
-
-    body {
-      font-family: 'Klee One', cursive;
-      background: var(--bg-tertiary);
-      min-height: 100vh;
-      padding: 1.5rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 560px;
-      margin-bottom: 1rem;
-    }
-
-    .nav-btn {
-      background: none;
-      border: 0.5px solid var(--border-mid);
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-family: 'Klee One', cursive;
-      font-size: 14px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      transition: background 0.15s;
-    }
+    body { font-family: 'Klee One', cursive; background: var(--bg-tertiary); min-height: 100vh; padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: center; }
+    .nav { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 560px; margin-bottom: 1rem; }
+    .nav-btn { background: none; border: 0.5px solid var(--border-mid); border-radius: 8px; padding: 6px 14px; font-family: 'Klee One', cursive; font-size: 14px; cursor: pointer; color: var(--text-secondary); transition: background 0.15s; }
     .nav-btn:hover { background: var(--bg-secondary); }
-
     .date-area { display: flex; align-items: center; gap: 8px; }
     .date-display { font-family: 'Caveat', cursive; font-size: 20px; font-weight: 500; color: var(--text-primary); }
-    .cal-btn {
-      background: none; border: none; cursor: pointer;
-      color: var(--text-secondary); padding: 4px;
-      border-radius: 8px; display: flex; align-items: center;
-      transition: background 0.15s;
-    }
+    .cal-btn { background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 4px; border-radius: 8px; display: flex; align-items: center; transition: background 0.15s; }
     .cal-btn:hover { background: var(--bg-secondary); }
     .cal-btn svg { width: 18px; height: 18px; }
-
-    .notebook {
-      background: var(--bg-primary);
-      border-radius: 4px;
-      width: 100%;
-      max-width: 560px;
-      border: 0.5px solid var(--border-mid);
-      overflow: hidden;
-    }
-
+    .notebook { background: var(--bg-primary); border-radius: 4px; width: 100%; max-width: 560px; border: 0.5px solid var(--border-mid); overflow: hidden; }
     .two-col { display: grid; grid-template-columns: 38% 62%; }
-
-    .col-header {
-      font-family: 'Caveat', cursive;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 6px 12px;
-      border-bottom: 0.5px solid var(--border-light);
-    }
+    .col-header { font-family: 'Caveat', cursive; font-size: 13px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 12px; border-bottom: 0.5px solid var(--border-light); }
     .col-header-time { border-right: 0.5px solid var(--border-light); }
-
     .time-section { border-right: 0.5px solid var(--border-light); }
-
-    .time-row {
-      display: flex; align-items: center;
-      border-bottom: 0.5px solid var(--border-light);
-      height: 24px; position: relative; overflow: hidden;
-    }
+    .time-row { display: flex; align-items: center; border-bottom: 0.5px solid var(--border-light); height: 24px; position: relative; overflow: hidden; }
     .time-row:hover .del-btn { opacity: 1; }
-
-    .time-input {
-      font-family: 'Caveat', cursive; font-size: 12px;
-      color: var(--text-secondary); background: none;
-      border: none; outline: none; width: 32px;
-      flex-shrink: 0; padding: 0 2px 0 5px; height: 100%;
-      border-right: 0.5px solid var(--border-light);
-    }
+    .time-input { font-family: 'Caveat', cursive; font-size: 12px; color: var(--text-secondary); background: none; border: none; outline: none; width: 32px; flex-shrink: 0; padding: 0 2px 0 5px; height: 100%; border-right: 0.5px solid var(--border-light); }
     .time-input::placeholder { color: rgba(0,0,0,0.2); }
-
-    .schedule-wrap {
-      flex: 1; position: relative;
-      display: flex; align-items: center;
-      height: 100%; min-width: 0;
-    }
-    .schedule-input {
-      font-family: 'Klee One', cursive; font-size: 12px;
-      color: var(--text-primary); background: none;
-      border: none; outline: none; width: 100%;
-      padding: 0 20px 0 5px; resize: none;
-      line-height: 24px; height: 24px; overflow: hidden;
-    }
+    .schedule-wrap { flex: 1; position: relative; display: flex; align-items: center; height: 100%; min-width: 0; }
+    .schedule-input { font-family: 'Klee One', cursive; font-size: 12px; color: var(--text-primary); background: none; border: none; outline: none; width: 100%; padding: 0 20px 0 5px; resize: none; line-height: 24px; height: 24px; overflow: hidden; }
     .schedule-input::placeholder { color: rgba(0,0,0,0.2); }
-
-    .del-btn {
-      opacity: 0; position: absolute; right: 3px;
-      top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer;
-      color: var(--text-tertiary); font-size: 10px;
-      padding: 2px 3px; line-height: 1;
-      transition: opacity 0.15s, color 0.15s;
-      font-family: sans-serif;
-    }
+    .del-btn { opacity: 0; position: absolute; right: 3px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-tertiary); font-size: 10px; padding: 2px 3px; line-height: 1; transition: opacity 0.15s, color 0.15s; font-family: sans-serif; }
     .del-btn:hover { color: var(--text-danger); }
-
-    .add-time-row {
-      height: 24px; display: flex; align-items: center;
-      padding: 0 8px; border-bottom: 0.5px solid var(--border-light);
-    }
-    .add-btn {
-      background: none; border: none; font-size: 15px;
-      color: var(--text-tertiary); cursor: pointer;
-      padding: 0 4px; font-family: 'Klee One', cursive;
-      transition: color 0.15s; line-height: 1;
-    }
+    .add-time-row { height: 24px; display: flex; align-items: center; padding: 0 8px; border-bottom: 0.5px solid var(--border-light); }
+    .add-btn { background: none; border: none; font-size: 15px; color: var(--text-tertiary); cursor: pointer; padding: 0 4px; font-family: 'Klee One', cursive; transition: color 0.15s; line-height: 1; }
     .add-btn:hover { color: var(--text-secondary); }
-
     .todo-section { padding: 0; }
-    .section-label {
-      font-family: 'Caveat', cursive; font-size: 16px;
-      font-weight: 600; color: var(--text-primary);
-      height: 24px; display: flex; align-items: center;
-      padding: 0 12px;
-      border-bottom: 0.5px solid var(--border-light);
-    }
-
+    .section-label { font-family: 'Caveat', cursive; font-size: 16px; font-weight: 600; color: var(--text-primary); height: 24px; display: flex; align-items: center; padding: 0 12px; border-bottom: 0.5px solid var(--border-light); }
     .todo-list { padding: 0 8px; }
-    .todo-item {
-      display: flex; align-items: center; gap: 4px;
-      border-bottom: 0.5px solid var(--border-light);
-      height: 24px; position: relative; overflow: hidden;
-    }
+    .todo-item { display: flex; align-items: center; gap: 4px; border-bottom: 0.5px solid var(--border-light); height: 24px; position: relative; overflow: hidden; }
     .todo-item:hover .del-btn { opacity: 1; }
-
     .todo-check { width: 12px; height: 12px; flex-shrink: 0; cursor: pointer; }
-    .todo-text-wrap {
-      flex: 1; position: relative;
-      display: flex; align-items: center;
-      height: 100%; min-width: 0;
-    }
-    .todo-text {
-      font-family: 'Klee One', cursive; font-size: 12px;
-      background: none; border: none; outline: none;
-      width: 100%; padding: 0 20px 0 2px;
-      color: var(--text-primary); height: 100%; min-width: 0;
-    }
+    .todo-text-wrap { flex: 1; position: relative; display: flex; align-items: center; height: 100%; min-width: 0; }
+    .todo-text { font-family: 'Klee One', cursive; font-size: 12px; background: none; border: none; outline: none; width: 100%; padding: 0 20px 0 2px; color: var(--text-primary); height: 100%; min-width: 0; }
     .todo-text.done { text-decoration: line-through; color: var(--text-tertiary); }
     .todo-text::placeholder { color: rgba(0,0,0,0.2); }
-
-    .add-todo-row {
-      height: 24px; display: flex; align-items: center;
-      gap: 6px; padding: 0 8px;
-      border-bottom: 0.5px solid var(--border-light);
-    }
+    .add-todo-row { height: 24px; display: flex; align-items: center; gap: 6px; padding: 0 8px; border-bottom: 0.5px solid var(--border-light); }
     .add-label { font-size: 11px; color: var(--text-tertiary); }
-
     .memo-section { border-top: 0.5px solid var(--border-light); }
     .memo-body { padding: 4px 8px; }
-    .memo-text {
-      font-family: 'Klee One', cursive; font-size: 13px;
-      background: none; border: none; outline: none;
-      width: 100%; min-height: 120px; resize: none;
-      line-height: 24px; color: var(--text-primary);
-      background-image: repeating-linear-gradient(
-        to bottom, transparent, transparent 23px,
-        var(--border-light) 23px, var(--border-light) 24px
-      );
-    }
+    .memo-text { font-family: 'Klee One', cursive; font-size: 13px; background: none; border: none; outline: none; width: 100%; min-height: 72px; resize: none; line-height: 24px; color: var(--text-primary); background-image: repeating-linear-gradient(to bottom, transparent, transparent 23px, var(--border-light) 23px, var(--border-light) 24px); }
     .memo-text::placeholder { color: rgba(0,0,0,0.2); }
-
     .divider-full { height: 0.5px; background: var(--border-light); }
-
     .diary-section { padding: 0; }
     .diary-inner { padding: 4px 1.25rem; }
-    .diary-lines {
-      font-family: 'Klee One', cursive; font-size: 13px;
-      background: none; border: none; outline: none;
-      width: 100%; min-height: 240px; resize: none;
-      line-height: 24px; color: var(--text-primary);
-      background-image: repeating-linear-gradient(
-        to bottom, transparent, transparent 23px,
-        var(--border-light) 23px, var(--border-light) 24px
-      );
-    }
+    .diary-lines { font-family: 'Klee One', cursive; font-size: 13px; background: none; border: none; outline: none; width: 100%; min-height: 144px; resize: none; line-height: 24px; color: var(--text-primary); background-image: repeating-linear-gradient(to bottom, transparent, transparent 23px, var(--border-light) 23px, var(--border-light) 24px); }
     .diary-lines::placeholder { color: rgba(0,0,0,0.2); }
-
-    .save-row {
-      padding: 0.6rem 1.25rem;
-      display: flex; justify-content: flex-end;
-      border-top: 0.5px solid var(--border-light);
-    }
-    .save-btn {
-      font-family: 'Klee One', cursive; font-size: 13px;
-      padding: 6px 18px; border-radius: 8px;
-      border: 0.5px solid var(--border-mid);
-      background: none; cursor: pointer;
-      color: var(--text-secondary); transition: background 0.15s;
-    }
+    .save-row { padding: 0.6rem 1.25rem; display: flex; justify-content: flex-end; border-top: 0.5px solid var(--border-light); }
+    .save-btn { font-family: 'Klee One', cursive; font-size: 13px; padding: 6px 18px; border-radius: 8px; border: 0.5px solid var(--border-mid); background: none; cursor: pointer; color: var(--text-secondary); transition: background 0.15s; }
     .save-btn:hover { background: var(--bg-secondary); }
     .save-btn.saved { color: var(--text-success); border-color: var(--border-success); }
 
-    .date-picker-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.3);
-      display: none; align-items: center;
-      justify-content: center; z-index: 100;
-    }
-    .date-picker-overlay.open { display: flex; }
-    .date-picker-box {
-      background: var(--bg-primary); border-radius: 12px;
-      border: 0.5px solid var(--border-mid);
-      padding: 1.25rem; display: flex;
-      flex-direction: column; gap: 12px;
-    }
-    .date-picker-box input[type=date] {
-      font-family: 'Klee One', cursive; font-size: 16px;
-      border: 0.5px solid var(--border-mid); border-radius: 8px;
-      padding: 8px 12px; background: var(--bg-primary);
-      color: var(--text-primary);
-    }
-    .dp-row { display: flex; gap: 8px; justify-content: flex-end; }
-    .dp-btn {
-      font-family: 'Klee One', cursive; font-size: 14px;
-      padding: 7px 18px; border-radius: 8px;
-      border: 0.5px solid var(--border-mid);
-      background: none; cursor: pointer; color: var(--text-primary);
-    }
-    .dp-btn:hover { background: var(--bg-secondary); }
-    .dp-btn.primary { background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary); }
-    .dp-btn.primary:hover { opacity: 0.85; }
+    /* カレンダー */
+    .cal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: none; align-items: flex-start; justify-content: center; z-index: 100; padding-top: 80px; }
+    .cal-overlay.open { display: flex; }
+    .cal-modal { background: var(--bg-primary); border-radius: 12px; border: 0.5px solid var(--border-mid); width: 100%; max-width: 520px; overflow: hidden; }
+    .cal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 0.5px solid var(--border-light); }
+    .cal-month-label { font-family: 'Caveat', cursive; font-size: 18px; color: var(--text-primary); }
+    .cal-nav { background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 16px; padding: 4px 8px; border-radius: 8px; transition: background 0.15s; font-family: 'Klee One', cursive; }
+    .cal-nav:hover { background: var(--bg-secondary); }
+    .cal-close { background: none; border: none; cursor: pointer; color: var(--text-tertiary); font-size: 18px; padding: 4px 8px; border-radius: 8px; transition: background 0.15s; line-height: 1; font-family: sans-serif; }
+    .cal-close:hover { color: var(--text-primary); background: var(--bg-secondary); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+    .cal-dow { font-size: 11px; color: var(--text-tertiary); text-align: center; padding: 6px 0 4px; border-bottom: 0.5px solid var(--border-light); }
+    .cal-dow:first-child { color: #c0392b; }
+    .cal-dow:last-child { color: #2980b9; }
+    .cal-cell { border-right: 0.5px solid var(--border-light); border-bottom: 0.5px solid var(--border-light); min-height: 72px; padding: 4px; cursor: pointer; transition: background 0.12s; }
+    .cal-cell:nth-child(7n) { border-right: none; }
+    .cal-cell:hover { background: var(--bg-secondary); }
+    .cal-cell.empty { cursor: default; background: none; }
+    .cal-cell.today .cal-day-num { background: var(--text-primary); color: var(--bg-primary); border-radius: 50%; }
+    .cal-cell.selected { background: var(--bg-secondary); }
+    .cal-cell.sun .cal-day-num { color: #c0392b; }
+    .cal-cell.sat .cal-day-num { color: #2980b9; }
+    .cal-day-num { font-family: 'Caveat', cursive; font-size: 14px; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; color: var(--text-primary); }
+    .cal-todos { display: flex; flex-direction: column; gap: 1px; }
+    .cal-todo-item { font-size: 10px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.4; padding: 0 1px; }
+    .cal-todo-item.done-item { text-decoration: line-through; color: var(--text-tertiary); }
+    .cal-todo-more { font-size: 10px; color: var(--text-tertiary); padding: 0 1px; }
   </style>
 </head>
 <body>
@@ -265,7 +108,7 @@
   <button class="nav-btn" id="prevDay">◀ 前日</button>
   <div class="date-area">
     <span class="date-display" id="dateDisplay"></span>
-    <button class="cal-btn" id="calBtn" title="日付を選ぶ">
+    <button class="cal-btn" id="calBtn" title="カレンダーを開く">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2"/>
         <line x1="16" y1="2" x2="16" y2="6"/>
@@ -282,15 +125,11 @@
     <div class="col-header col-header-time">TIME</div>
     <div class="col-header">TO DO</div>
   </div>
-
   <div class="two-col">
     <div class="time-section">
       <div id="timeRows"></div>
-      <div class="add-time-row">
-        <button class="add-btn" id="addTimeBtn">＋</button>
-      </div>
+      <div class="add-time-row"><button class="add-btn" id="addTimeBtn">＋</button></div>
     </div>
-
     <div class="todo-section">
       <div class="todo-list" id="todoList"></div>
       <div class="add-todo-row">
@@ -299,43 +138,37 @@
       </div>
       <div class="memo-section">
         <div class="section-label">MEMO</div>
-        <div class="memo-body">
-          <textarea class="memo-text" id="memoText" placeholder="メモ..." rows="3"></textarea>
-        </div>
+        <div class="memo-body"><textarea class="memo-text" id="memoText" placeholder="メモ..." rows="3"></textarea></div>
       </div>
     </div>
   </div>
-
   <div class="divider-full"></div>
-
   <div class="diary-section">
-    <div class="section-label" style="padding: 0 1.25rem; height: 24px; border-bottom: 0.5px solid rgba(0,0,0,0.1);">DIARY</div>
-    <div class="diary-inner">
-      <textarea class="diary-lines" id="diaryText" placeholder="今日のできごとを書いてみよう..." rows="6"></textarea>
-    </div>
+    <div class="section-label" style="padding:0 1.25rem;height:24px;border-bottom:0.5px solid rgba(0,0,0,0.1);">DIARY</div>
+    <div class="diary-inner"><textarea class="diary-lines" id="diaryText" placeholder="今日のできごとを書いてみよう..." rows="6"></textarea></div>
   </div>
-
-  <div class="save-row">
-    <button class="save-btn" id="saveBtn">保存する</button>
-  </div>
+  <div class="save-row"><button class="save-btn" id="saveBtn">保存する</button></div>
 </div>
 
-<div class="date-picker-overlay" id="dpOverlay">
-  <div class="date-picker-box">
-    <div style="font-family:'Klee One',cursive;font-size:15px;color:#1a1a18;">日付を選ぶ</div>
-    <input type="date" id="dpInput">
-    <div class="dp-row">
-      <button class="dp-btn" id="dpCancel">キャンセル</button>
-      <button class="dp-btn primary" id="dpOk">決定</button>
+<!-- カレンダーモーダル -->
+<div class="cal-overlay" id="calOverlay">
+  <div class="cal-modal">
+    <div class="cal-header">
+      <button class="cal-nav" id="calPrevMonth">◀</button>
+      <span class="cal-month-label" id="calMonthLabel"></span>
+      <button class="cal-nav" id="calNextMonth">▶</button>
+      <button class="cal-close" id="calClose">×</button>
     </div>
+    <div class="cal-grid" id="calDow"></div>
+    <div class="cal-grid" id="calCells"></div>
   </div>
 </div>
 
 <script>
   const WEEKDAY = ['日','月','火','水','木','金','土'];
   let currentDate = new Date(); currentDate.setHours(0,0,0,0);
-  let timeEntries = [];
-  let todos = [];
+  let timeEntries = [], todos = [];
+  let calYear, calMonth;
 
   function toKey(d) { return d.toISOString().slice(0,10); }
   function loadData(k) { try { return JSON.parse(localStorage.getItem('diary_'+k)||'null'); } catch { return null; } }
@@ -344,30 +177,27 @@
 
   function makeDelBtn(onClick) {
     const btn = document.createElement('button');
-    btn.className = 'del-btn'; btn.textContent = '×'; btn.title = '削除';
+    btn.className='del-btn'; btn.textContent='×'; btn.title='削除';
     btn.addEventListener('click', onClick);
     return btn;
   }
 
   function renderTimeRows() {
-    const cont = document.getElementById('timeRows');
-    cont.innerHTML = '';
-    timeEntries.forEach((entry, i) => {
-      const row = document.createElement('div'); row.className = 'time-row';
+    const cont = document.getElementById('timeRows'); cont.innerHTML='';
+    timeEntries.forEach((entry,i) => {
+      const row = document.createElement('div'); row.className='time-row';
       const tInp = document.createElement('input');
-      tInp.type = 'text'; tInp.className = 'time-input'; tInp.placeholder = '0:00';
-      tInp.value = entry.time || ''; tInp.maxLength = 5;
-      tInp.addEventListener('input', () => { timeEntries[i].time = tInp.value; });
-      const wrap = document.createElement('div'); wrap.className = 'schedule-wrap';
+      tInp.type='text'; tInp.className='time-input'; tInp.placeholder='0:00';
+      tInp.value=entry.time||''; tInp.maxLength=5;
+      tInp.addEventListener('input',()=>{ timeEntries[i].time=tInp.value; });
+      const wrap = document.createElement('div'); wrap.className='schedule-wrap';
       const sInp = document.createElement('textarea');
-      sInp.className = 'schedule-input'; sInp.rows = 1; sInp.placeholder = '予定';
-      sInp.value = entry.text || '';
-      sInp.addEventListener('input', () => { timeEntries[i].text = sInp.value; });
-      sInp.addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();addTimeEntry();} });
-      const del = makeDelBtn(() => { timeEntries.splice(i,1); renderTimeRows(); });
+      sInp.className='schedule-input'; sInp.rows=1; sInp.placeholder='予定'; sInp.value=entry.text||'';
+      sInp.addEventListener('input',()=>{ timeEntries[i].text=sInp.value; });
+      sInp.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();addTimeEntry();} });
+      const del = makeDelBtn(()=>{ timeEntries.splice(i,1); renderTimeRows(); });
       wrap.appendChild(sInp); wrap.appendChild(del);
-      row.appendChild(tInp); row.appendChild(wrap);
-      cont.appendChild(row);
+      row.appendChild(tInp); row.appendChild(wrap); cont.appendChild(row);
     });
   }
 
@@ -379,27 +209,24 @@
   }
 
   function renderTodos() {
-    const cont = document.getElementById('todoList');
-    cont.innerHTML = '';
-    todos.forEach((t, i) => {
-      const row = document.createElement('div'); row.className = 'todo-item';
+    const cont = document.getElementById('todoList'); cont.innerHTML='';
+    todos.forEach((t,i) => {
+      const row = document.createElement('div'); row.className='todo-item';
       const cb = document.createElement('input'); cb.type='checkbox'; cb.className='todo-check'; cb.checked=t.done;
       const wrap = document.createElement('div'); wrap.className='todo-text-wrap';
       const inp = document.createElement('input'); inp.type='text';
       inp.className='todo-text'+(t.done?' done':''); inp.value=t.text; inp.placeholder='タスクを入力...';
-      cb.addEventListener('change', () => { todos[i].done=cb.checked; inp.classList.toggle('done',cb.checked); });
-      inp.addEventListener('input', () => { todos[i].text=inp.value; });
-      inp.addEventListener('keydown', e => { if(e.key==='Enter'){e.preventDefault();addTodo();} });
-      const del = makeDelBtn(() => { todos.splice(i,1); renderTodos(); });
+      cb.addEventListener('change',()=>{ todos[i].done=cb.checked; inp.classList.toggle('done',cb.checked); });
+      inp.addEventListener('input',()=>{ todos[i].text=inp.value; });
+      inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){e.preventDefault();addTodo();} });
+      const del = makeDelBtn(()=>{ todos.splice(i,1); renderTodos(); });
       wrap.appendChild(inp); wrap.appendChild(del);
-      row.appendChild(cb); row.appendChild(wrap);
-      cont.appendChild(row);
+      row.appendChild(cb); row.appendChild(wrap); cont.appendChild(row);
     });
   }
 
   function addTodo() {
-    todos.push({text:'',done:false});
-    renderTodos();
+    todos.push({text:'',done:false}); renderTodos();
     const inputs = document.querySelectorAll('.todo-text');
     if(inputs.length) inputs[inputs.length-1].focus();
   }
@@ -421,29 +248,83 @@
     currentDate = d;
     document.getElementById('dateDisplay').textContent = getDisplayStr(d);
     const data = loadData(toKey(d));
-    timeEntries = (data&&data.timeEntries) ? data.timeEntries : [{time:'',text:''},{time:'',text:''},{time:'',text:''},{time:'',text:''},{time:'',text:''}];
-    todos = (data&&data.todos) ? data.todos : [];
+    timeEntries = (data&&data.timeEntries)?data.timeEntries:[{time:'',text:''},{time:'',text:''},{time:'',text:''},{time:'',text:''},{time:'',text:''}];
+    todos = (data&&data.todos)?data.todos:[];
     renderTimeRows(); renderTodos();
     document.getElementById('memoText').value = data?(data.memo||''):'';
     document.getElementById('diaryText').value = data?(data.diary||''):'';
   }
 
+  function renderCalendar() {
+    document.getElementById('calMonthLabel').textContent = `${calYear}年${calMonth+1}月`;
+    const dowCont = document.getElementById('calDow'); dowCont.innerHTML='';
+    ['日','月','火','水','木','金','土'].forEach(d => {
+      const el = document.createElement('div'); el.className='cal-dow'; el.textContent=d;
+      dowCont.appendChild(el);
+    });
+    const cells = document.getElementById('calCells'); cells.innerHTML='';
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    for(let i=0; i<firstDay; i++) {
+      const blank = document.createElement('div'); blank.className='cal-cell empty'; cells.appendChild(blank);
+    }
+    for(let d=1; d<=daysInMonth; d++) {
+      const cell = document.createElement('div'); cell.className='cal-cell';
+      const cellDate = new Date(calYear, calMonth, d);
+      const dow = cellDate.getDay();
+      if(dow===0) cell.classList.add('sun');
+      if(dow===6) cell.classList.add('sat');
+      if(cellDate.getTime()===today.getTime()) cell.classList.add('today');
+      if(cellDate.getTime()===currentDate.getTime()) cell.classList.add('selected');
+
+      const numEl = document.createElement('div'); numEl.className='cal-day-num'; numEl.textContent=d;
+      cell.appendChild(numEl);
+
+      const data = loadData(toKey(cellDate));
+      if(data && data.todos && data.todos.length>0) {
+        const todosCont = document.createElement('div'); todosCont.className='cal-todos';
+        const max = 3;
+        data.todos.slice(0,max).forEach(t => {
+          const item = document.createElement('div');
+          item.className='cal-todo-item'+(t.done?' done-item':'');
+          item.textContent=(t.done?'✓ ':'· ')+t.text;
+          todosCont.appendChild(item);
+        });
+        if(data.todos.length>max) {
+          const more = document.createElement('div'); more.className='cal-todo-more';
+          more.textContent=`+ ${data.todos.length-max}件`;
+          todosCont.appendChild(more);
+        }
+        cell.appendChild(todosCont);
+      }
+
+      cell.addEventListener('click', () => {
+        loadPage(cellDate);
+        document.getElementById('calOverlay').classList.remove('open');
+      });
+      cells.appendChild(cell);
+    }
+  }
+
+  function openCalendar() {
+    calYear = currentDate.getFullYear();
+    calMonth = currentDate.getMonth();
+    renderCalendar();
+    document.getElementById('calOverlay').classList.add('open');
+  }
+
+  document.getElementById('calBtn').addEventListener('click', openCalendar);
+  document.getElementById('calClose').addEventListener('click', ()=>{ document.getElementById('calOverlay').classList.remove('open'); });
+  document.getElementById('calOverlay').addEventListener('click', e=>{ if(e.target===e.currentTarget) document.getElementById('calOverlay').classList.remove('open'); });
+  document.getElementById('calPrevMonth').addEventListener('click', ()=>{ calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); });
+  document.getElementById('calNextMonth').addEventListener('click', ()=>{ calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCalendar(); });
   document.getElementById('prevDay').addEventListener('click',()=>{ const d=new Date(currentDate); d.setDate(d.getDate()-1); loadPage(d); });
   document.getElementById('nextDay').addEventListener('click',()=>{ const d=new Date(currentDate); d.setDate(d.getDate()+1); loadPage(d); });
   document.getElementById('addTimeBtn').addEventListener('click', addTimeEntry);
   document.getElementById('addTodoBtn').addEventListener('click', addTodo);
   document.getElementById('saveBtn').addEventListener('click', collectAndSave);
-  document.getElementById('calBtn').addEventListener('click',()=>{
-    document.getElementById('dpInput').value = toKey(currentDate);
-    document.getElementById('dpOverlay').classList.add('open');
-  });
-  document.getElementById('dpOk').addEventListener('click',()=>{
-    const val=document.getElementById('dpInput').value;
-    if(val){const p=val.split('-');loadPage(new Date(+p[0],+p[1]-1,+p[2]));}
-    document.getElementById('dpOverlay').classList.remove('open');
-  });
-  document.getElementById('dpCancel').addEventListener('click',()=>{ document.getElementById('dpOverlay').classList.remove('open'); });
-  document.getElementById('dpOverlay').addEventListener('click',e=>{ if(e.target===e.currentTarget) e.currentTarget.classList.remove('open'); });
 
   loadPage(currentDate);
 </script>
