@@ -226,7 +226,7 @@
   /* ====== Supabase 設定 ====== */
   const SUPABASE_URL = 'https://zrzoirkqpoplpexbnqvw.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_n5N9P8ddzhySftxChH7MQA_ybmO9JK0';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const WEEKDAY = ['日','月','火','水','木','金','土'];
   let currentDate = new Date(); currentDate.setHours(0,0,0,0);
@@ -272,7 +272,7 @@
 
     try {
       if (isSignupMode) {
-        const { data, error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await sbClient.auth.signUp({ email, password });
         if (error) { showAuthError(error.message); }
         else if (data.user && !data.session) {
           showAuthMsg('確認メールを送信しました。メール内のリンクをクリックしてください。');
@@ -280,7 +280,7 @@
           onLoginSuccess(data.session.user);
         }
       } else {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await sbClient.auth.signInWithPassword({ email, password });
         if (error) { showAuthError('ログインに失敗しました：' + error.message); }
         else { onLoginSuccess(data.user); }
       }
@@ -303,7 +303,7 @@
   }
 
   document.getElementById('logoutBtn').addEventListener('click', async () => {
-    await supabase.auth.signOut();
+    await sbClient.auth.signOut();
     currentUser = null;
     document.getElementById('mainScreen').style.display = 'none';
     document.getElementById('authScreen').style.display = 'block';
@@ -313,7 +313,7 @@
 
   /* 既存セッションがあれば自動ログイン */
   async function checkSession() {
-    const { data } = await supabase.auth.getSession();
+    const { data } = await sbClient.auth.getSession();
     if (data.session && data.session.user) {
       onLoginSuccess(data.session.user);
     }
@@ -323,7 +323,7 @@
   /* ====== データ保存・読み込み（Supabase） ====== */
   async function loadDataFromDB(dateKey) {
     if (!currentUser) return null;
-    const { data, error } = await supabase
+    const { data, error } = await sbClient
       .from('diary_entries')
       .select('*')
       .eq('user_id', currentUser.id)
@@ -335,7 +335,7 @@
 
   async function saveDataToDB(dateKey, payload) {
     if (!currentUser) return;
-    const { error } = await supabase
+    const { error } = await sbClient
       .from('diary_entries')
       .upsert({
         user_id: currentUser.id,
@@ -353,7 +353,7 @@
     if (!currentUser) return {};
     const start = new Date(year, month, 1);
     const end = new Date(year, month + 1, 0);
-    const { data, error } = await supabase
+    const { data, error } = await sbClient
       .from('diary_entries')
       .select('date, todos')
       .eq('user_id', currentUser.id)
